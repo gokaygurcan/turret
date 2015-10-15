@@ -1,6 +1,6 @@
 {
   "name": "bigfishtv-turret",
-  "version": "3.1.4",
+  "version": "3.2.0",
   "description": "A responsive frontend framework build with Less to normalize styles for default HTML elements",
   "homepage": "http://turret.bigfish.tv",
   "author": "Bigfish.tv",
@@ -9,6 +9,11 @@
       "name": "Scott de Jonge",
       "email": "scottdj@bigfish.tv",
       "url": "http://scottdejonge.com"
+    },
+    {
+      "name": "Gökay Gürcan",
+      "email": "info@gokaygurcan.com",
+      "url": "http://www.gokaygurcan.com/"
     }
   ],
   "repository": {
@@ -22,27 +27,40 @@
   "keywords": [
     "css",
     "less",
+    "sass",
     "responsive",
     "front-end",
     "framework",
     "web"
   ],
-  "style": "dist/turret.css",
-  "less": "turret/turret.less",
+  "directories": {
+    "dist": "./dist",
+    "less": "./src/less",
+    "sass": "./src/sass"
+  },
   "dependencies": {
-    "less": "2.2.0"
+    "less": "^2.5.3",
+    "minifier": "^0.7.1",
+    "node-sass": "^3.3.3"
   },
   "devDependencies": {
-    "watch": "^0.13.0"
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "matchdep": "^1.0.0",
+    "watch": "^0.16.0"
   },
   "scripts": {
-    "watch:turret": "watch \"npm run build\" \"turret\"",
-    "watch:docs": "watch \"npm run build\" \"docs/styles\"",
-    "watch": "npm run watch:turret && npm run watch:docs",
-    "build": "lessc docs/styles/styles.less > docs/css/styles.css",
-    "dist:css": "lessc turret/turret.less > dist/turret.css",
-    "dist:min": "lessc -x turret/turret.less > dist/turret.min.css",
-    "dist": "npm run dist:css && npm run dist:min",
+    "build:less": "lessc src/less/turret.less > dist/turret.css",
+    "build:sass": "node-sass --include-path scss src/sass/turret.scss dist/turret.css",
+    "minify": "minify --output dist/turret.min.css dist/turret.css",
+    "watch": "npm run watch:less && npm run watch:sass",
+    "watch:less": "watch \"npm run build:less\" \"src/less\"",
+    "watch:sass": "watch \"npm run build:sass\" \"src/sass\"",
     "postversion": "npm run docs:compile && echo \"Run 'npm publish ./' if you want this to be published\"",
     "predocs:compile": "pushd ../turret_gh-pages && rm -rf docs dist examples *.html",
     "docs:compile": "wget -rkE --no-host-directories --no-verbose --no-cache -P ../turret_gh-pages/ http://dev.turret/",

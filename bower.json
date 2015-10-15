@@ -1,14 +1,27 @@
 {
   "name": "turret",
-  "version": "3.1.4",
+  "version": "3.2.0",
   "description": "A responsive frontend framework build with Less to normalize styles for default HTML elements",
   "homepage": "https://github.com/bigfishtv/turret",
   "authors": [
     "Scott de Jonge <scottdj@bigfish.tv>"
   ],
+  "contributors": [
+    {
+      "name": "Scott de Jonge",
+      "email": "scottdj@bigfish.tv",
+      "url": "http://scottdejonge.com"
+    },
+    {
+      "name": "Gökay Gürcan",
+      "email": "info@gokaygurcan.com",
+      "url": "http://www.gokaygurcan.com/"
+    }
+  ],
   "keywords": [
     "css",
     "less",
+    "sass",
     "responsive",
     "front-end",
     "framework",
@@ -24,6 +37,7 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    ".sass-cache"
   ]
 }
