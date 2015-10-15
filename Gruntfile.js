@@ -56,6 +56,9 @@ module.exports = function(grunt) {
     // convert less files to css
     less: {
       build: {
+        options: {
+          sourceMap: false
+        },
         files: {
           '<%= dir.dist %>/turret.css': '<%= dir.less %>/turret.less'
         }
@@ -66,6 +69,7 @@ module.exports = function(grunt) {
     sass: {
       build: {
         options: {
+          sourcemap: 'none',
           style: 'expanded'
         },
         files: {
@@ -80,7 +84,7 @@ module.exports = function(grunt) {
         options: {
           banner: '<%= meta.banner %>',
           report: 'gzip',
-          sourceMap: true
+          sourceMap: false
         },
         files: [
           {
